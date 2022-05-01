@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "alexd3d", "alexd3d\alexd3d.vcxproj", "{35029987-005E-48E4-A84E-29EEB04072CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{35029987-005E-48E4-A84E-29EEB04072CE}.Debug|x64.ActiveCfg = Debug|x64
+		{35029987-005E-48E4-A84E-29EEB04072CE}.Debug|x64.Build.0 = Debug|x64
+		{35029987-005E-48E4-A84E-29EEB04072CE}.Debug|x86.ActiveCfg = Debug|Win32
+		{35029987-005E-48E4-A84E-29EEB04072CE}.Debug|x86.Build.0 = Debug|Win32
+		{35029987-005E-48E4-A84E-29EEB04072CE}.Release|x64.ActiveCfg = Release|x64
+		{35029987-005E-48E4-A84E-29EEB04072CE}.Release|x64.Build.0 = Release|x64
+		{35029987-005E-48E4-A84E-29EEB04072CE}.Release|x86.ActiveCfg = Release|Win32
+		{35029987-005E-48E4-A84E-29EEB04072CE}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {60AA5DE3-F7DF-40C6-8FB0-F4EEA0E33E05}
+	EndGlobalSection
+EndGlobal
