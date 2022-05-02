@@ -1,5 +1,37 @@
 #include<Windows.h>
 #include<string>
+#include<fstream>
+#include"WindowsMessageMap.h"
+
+
+LPCWSTR str2LPCWSTR(std::string s) {
+	std::wstring temp(s.begin(),s.end());
+	return temp.c_str();
+}
+
+
+LRESULT CALLBACK WndProc(HWND hWnd,UINT msg,WPARAM wParam,LPARAM lParam) {
+
+	static WindowsMessageMap mm;
+	OutputDebugString(mm(msg,lParam,wParam).c_str());
+
+	switch (msg) {
+	case WM_CLOSE:
+		PostQuitMessage(1023);
+		break;
+	case WM_KEYDOWN:
+		if (wParam == 'F') {
+			SetWindowText(hWnd,L"happy birthday to xu");
+		}
+	case WM_KEYUP:
+		if (wParam == 'F') {
+			SetWindowText(hWnd, L"sdf");
+		}
+		break;
+	}
+	return DefWindowProc(hWnd,msg,wParam,lParam);
+}
+
 
 int CALLBACK WinMain(
 	HINSTANCE hInstance,
@@ -7,15 +39,11 @@ int CALLBACK WinMain(
 	LPSTR lpCmdLine,
 	int nCmdShow)
 {
-	//get lpszClassName
-	std::string s = "alexd3d";
-	std::wstring stemp(s.begin(), s.end());
-	LPCWSTR pClassName = stemp.c_str();
 	//register window class
 	WNDCLASSEXW wc = { 0 };
 	//wc. = sizeof(wc);
 	wc.style = CS_OWNDC;
-	wc.lpfnWndProc = DefWindowProc;
+	wc.lpfnWndProc = WndProc;
 	wc.cbSize = sizeof( wc );
 	wc.cbClsExtra = 0;
 	wc.cbWndExtra = 0;
@@ -24,19 +52,15 @@ int CALLBACK WinMain(
 	wc.hCursor = nullptr;
 	wc.hbrBackground = nullptr;
 	wc.lpszMenuName = nullptr;
-	wc.lpszClassName = pClassName;
+	wc.lpszClassName = L"alex3d";
 	RegisterClassEx( &wc );
 	
 
 
-	//get windowname
-	std::string s2 = "Happy hard Window";
-	std::wstring stemp2(s2.begin(), s2.end());
-	LPCWSTR pWndName = stemp2.c_str();
 	//create window
 	HWND hwnd = CreateWindowExW(
-		0, pClassName,
-		pWndName,
+		0, L"alex3d",
+		L"Happy hard Window",
 		WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU,
 		200, 200, 640, 480,
 		nullptr, nullptr, hInstance, nullptr
@@ -44,6 +68,22 @@ int CALLBACK WinMain(
 
 	//show window
 	ShowWindow(hwnd , SW_SHOW);
-	while (true);
-	return 0;
+
+	//message pump
+	BOOL bRet;
+
+	MSG msg;
+	UINT temp = 0;
+	int  k = 0;
+	while ((bRet = GetMessage(&msg, nullptr, 0, 0)) != 0) {
+		if (bRet == -1) {
+			//error
+		}
+		else {
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+			k = 1;
+		}
+	}
+	return msg.wParam;
 }

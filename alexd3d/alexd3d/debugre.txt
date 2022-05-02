@@ -1,0 +1,2 @@
+re of WM_close is: -2number of WM_close is0
+re of WM_QUIT is:0number of WM_QUIT is1
